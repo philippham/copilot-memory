@@ -1,4 +1,6 @@
-# Copilot Memory
+# Copilot Memory 101
+
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/philippham.copilot-persistent-memory?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=philippham.copilot-persistent-memory)
 
 Copilot is great, but it forgets everything the moment you close VS Code. This extension gives it a memory that actually sticks — across sessions, across days, across projects.
 
