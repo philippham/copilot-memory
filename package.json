@@ -1,6 +1,6 @@
 {
   "name": "copilot-persistent-memory",
-  "displayName": "Copilot Memory",
+  "displayName": "Copilot Memory 101",
   "description": "Persistent memory for GitHub Copilot across sessions",
   "version": "0.1.0",
   "publisher": "philippham",
