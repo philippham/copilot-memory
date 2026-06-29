@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="128" height="128" rx="26" fill="url(#bg)"/>
+
+  <!-- Database top ellipse -->
+  <ellipse cx="64" cy="40" rx="28" ry="9" fill="url(#glow)" opacity="0.95"/>
+
+  <!-- Database body tier 1 -->
+  <rect x="36" y="40" width="56" height="18" fill="#6d28d9"/>
+  <ellipse cx="64" cy="58" rx="28" ry="9" fill="#7c3aed"/>
+
+  <!-- Database body tier 2 -->
+  <rect x="36" y="58" width="56" height="18" fill="#5b21b6"/>
+  <ellipse cx="64" cy="76" rx="28" ry="9" fill="#6d28d9"/>
+
+  <!-- Database body tier 3 -->
+  <rect x="36" y="76" width="56" height="12" fill="#4c1d95"/>
+  <ellipse cx="64" cy="88" rx="28" ry="9" fill="#5b21b6"/>
+
+  <!-- Shine on top ellipse -->
+  <ellipse cx="56" cy="37" rx="12" ry="4" fill="white" opacity="0.12"/>
+
+  <!-- Sparkle star top-right -->
+  <g transform="translate(96, 26)">
+    <polygon points="0,-9 2.1,-2.1 9,0 2.1,2.1 0,9 -2.1,2.1 -9,0 -2.1,-2.1" fill="#fbbf24"/>
+  </g>
+
+  <!-- Small sparkle bottom-left -->
+  <g transform="translate(28, 96)">
+    <polygon points="0,-5 1.2,-1.2 5,0 1.2,1.2 0,5 -1.2,1.2 -5,0 -1.2,-1.2" fill="#fbbf24" opacity="0.7"/>
+  </g>
+
+  <!-- Data dots on tier 1 -->
+  <circle cx="52" cy="49" r="2.5" fill="#ddd6fe" opacity="0.8"/>
+  <circle cx="64" cy="49" r="2.5" fill="#ddd6fe" opacity="0.8"/>
+  <circle cx="76" cy="49" r="2.5" fill="#ddd6fe" opacity="0.8"/>
+
+  <!-- Data dots on tier 2 -->
+  <circle cx="52" cy="67" r="2.5" fill="#c4b5fd" opacity="0.6"/>
+  <circle cx="64" cy="67" r="2.5" fill="#c4b5fd" opacity="0.6"/>
+  <circle cx="76" cy="67" r="2.5" fill="#c4b5fd" opacity="0.6"/>
+</svg>
