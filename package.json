@@ -1,0 +1,148 @@
+{
+  "name": "copilot-memory",
+  "displayName": "Copilot Memory",
+  "description": "Persistent memory for GitHub Copilot across sessions",
+  "version": "0.1.0",
+  "publisher": "philippham",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philippham/copilot-memory"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "copilot",
+    "memory",
+    "context",
+    "ai",
+    "github copilot"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copilot-memory.remember",
+        "title": "Copilot Memory: Remember This"
+      },
+      {
+        "command": "copilot-memory.show",
+        "title": "Copilot Memory: Show Memories"
+      },
+      {
+        "command": "copilot-memory.clear",
+        "title": "Copilot Memory: Clear Project Memories"
+      },
+      {
+        "command": "copilot-memory.status",
+        "title": "Copilot Memory: Show Status"
+      },
+      {
+        "command": "copilot-memory.setupOllama",
+        "title": "Copilot Memory: Setup Ollama"
+      }
+    ],
+    "chatParticipants": [
+      {
+        "id": "copilot-memory.mem",
+        "name": "mem",
+        "fullName": "Copilot Memory",
+        "description": "Chat with Copilot while automatically saving conversation context across sessions",
+        "isSticky": false
+      }
+    ],
+    "configuration": {
+      "title": "Copilot Memory",
+      "properties": {
+        "copilotMemory.semanticSearch.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable semantic search using Ollama embeddings. Requires Ollama running locally with an embedding model installed. Falls back to keyword search when Ollama is unavailable."
+        },
+        "copilotMemory.semanticSearch.ollamaUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama server URL for semantic search embeddings."
+        },
+        "copilotMemory.semanticSearch.ollamaModel": {
+          "type": "string",
+          "default": "nomic-embed-text",
+          "description": "Ollama embedding model to use. Run 'ollama pull nomic-embed-text' to install the default."
+        }
+      }
+    },
+    "languageModelTools": [
+      {
+        "name": "copilot-memory_recall",
+        "displayName": "Recall Memory",
+        "modelDescription": "Search saved project decisions, patterns, and context from previous Copilot sessions. Use this when the user asks about past decisions, why something was built a certain way, or needs context from previous conversations.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Keywords or question to search for in memory"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "copilot-memory_save",
+        "displayName": "Save Memory",
+        "modelDescription": "Save an important decision, architectural pattern, bug workaround, or project context for future Copilot sessions. Use this when the user makes a significant decision or explicitly asks you to remember something.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string",
+              "description": "The memory content to save"
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "decision",
+                "pattern",
+                "context",
+                "bug"
+              ],
+              "description": "Category: decision (architectural/design choices), pattern (code patterns to follow), context (project background or constraints), bug (known issues or workarounds)"
+            }
+          },
+          "required": [
+            "content",
+            "category"
+          ]
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && mocha",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "mocha": "^11.7.6",
+    "typescript": "^5.4.0"
+  }
+}
